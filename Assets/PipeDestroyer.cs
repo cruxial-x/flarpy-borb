@@ -27,5 +27,11 @@ public class PipeDestroyer : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+
+        if(collision.gameObject.tag == "Cloud")
+        {
+            Debug.Log("Cloud Destroyed");
+            Destroy(collision.gameObject);
+        }
     }
 }

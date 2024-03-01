@@ -7,6 +7,7 @@ TagManager:
   - Pipe
   - PipeDestroyer
   - ScoreZone
+  - Cloud
   layers:
   - Default
   - TransparentFX

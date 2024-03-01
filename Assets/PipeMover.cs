@@ -16,13 +16,4 @@ public class PipeMover : MonoBehaviour
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("PipeMover Hit");
-        if(collision.gameObject.tag == "PipeDestroyer")
-        {
-            Debug.Log("Pipe Destroyed");
-            Destroy(gameObject);
-        }
-    }
 }

@@ -29,6 +29,10 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.tag != "Pipe")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
         if(collision.gameObject.tag == "Pipe")
         {
             Destroy(gameObject);
@@ -36,7 +40,6 @@ public class BirdController : MonoBehaviour
         }
         if(collision.gameObject.tag == "ScoreZone")
         {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             IncrementScore();
             Debug.Log("Score: " + score);
         }
