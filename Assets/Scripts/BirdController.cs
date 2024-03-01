@@ -7,6 +7,7 @@ public class BirdController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameController gameController;
+    public GameObject gunPrefab;
 
     public Text scoreText;
     private int score = 0;
@@ -24,6 +25,10 @@ public class BirdController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector2.up * flapForce;
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ShootGun();
         }
     }
 
@@ -55,5 +60,9 @@ public class BirdController : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreText.text = "  Score: " + score;
+    }
+    private void ShootGun()
+    {
+        Instantiate(gunPrefab, transform);
     }
 }
