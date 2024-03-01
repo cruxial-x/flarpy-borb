@@ -29,17 +29,18 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag != "Pipe")
+        if (collision.gameObject.CompareTag("Cloud"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
-        if(collision.gameObject.tag == "Pipe")
+        else if (collision.gameObject.CompareTag("Pipe"))
         {
             Destroy(gameObject);
             gameController.GameOver();
         }
-        if(collision.gameObject.tag == "ScoreZone")
+        else if (collision.gameObject.CompareTag("ScoreZone"))
         {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             IncrementScore();
             Debug.Log("Score: " + score);
         }

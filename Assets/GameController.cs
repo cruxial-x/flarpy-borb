@@ -46,6 +46,9 @@ public class GameController : MonoBehaviour
                 restartButtonText.text = message;
                 yield return new WaitForSeconds(restartDelay);
                 restartDelay -= 0.1f; // Decrease restart delay each loop
+
+                // Limit restart delay to 0.2f
+                restartDelay = Mathf.Clamp(restartDelay, 0f, 0.2f);
             }
         }
     }
