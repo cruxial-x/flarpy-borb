@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeMover : MonoBehaviour
+public class PipeDestroyer : MonoBehaviour
 {
-    public float speed = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +13,20 @@ public class PipeMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("PipeMover Hit");
-        if(collision.gameObject.tag == "PipeDestroyer")
+        Debug.Log("wtf");
+        if(collision.gameObject.tag == "Pipe")
         {
-            Debug.Log("Pipe Destroyed");
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "ScoreZone")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }

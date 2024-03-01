@@ -29,7 +29,6 @@ public class PipeController : MonoBehaviour
     {
         float randomY = Random.Range(minHeight, maxHeight);
         Vector2 spawnPosition = new Vector2(transform.position.x, randomY);
-        pipePrefab.tag = "Pipe";
         Instantiate(pipePrefab, spawnPosition, Quaternion.identity);
     }
 }

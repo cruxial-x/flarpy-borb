@@ -28,18 +28,13 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("OnCollisionEnter2D called");
         if(collision.gameObject.tag == "Pipe")
         {
             Destroy(gameObject);
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        Debug.Log("OnTriggerEnter2D called");
-        if(collider.gameObject.tag == "Pipe")
+        if(collision.gameObject.tag == "ScoreZone")
         {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             IncrementScore();
             Debug.Log("Score: " + score);
         }
@@ -53,6 +48,6 @@ public class BirdController : MonoBehaviour
         // Update the score text UI
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "  Score: " + score;
     }
 }
