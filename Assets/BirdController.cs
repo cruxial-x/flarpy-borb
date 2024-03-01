@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BirdController : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public GameController gameController;
 
     public Text scoreText;
     private int score = 0;
@@ -31,6 +32,7 @@ public class BirdController : MonoBehaviour
         if(collision.gameObject.tag == "Pipe")
         {
             Destroy(gameObject);
+            gameController.GameOver();
         }
         if(collision.gameObject.tag == "ScoreZone")
         {

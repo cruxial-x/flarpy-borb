@@ -18,7 +18,6 @@ public class PipeDestroyer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("wtf");
         if(collision.gameObject.tag == "Pipe")
         {
             Destroy(collision.gameObject);
