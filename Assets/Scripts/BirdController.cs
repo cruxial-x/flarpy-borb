@@ -15,6 +15,7 @@ public class BirdController : MonoBehaviour
     public int score = 0;
     private int cloudHitCount = 0;
     private int highScore;
+    private bool isAlive;
 
     public float flapForce = 5;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class BirdController : MonoBehaviour
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         UpdateHighScoreText();
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -37,6 +39,10 @@ public class BirdController : MonoBehaviour
             ShootGun();
             timeOfLastShot = Time.time;
         }
+        if (!isAlive){
+            gameController.GameOver();
+            Destroy(gameObject);
+        }
     }
     public int GetCloudHitCount()
     {
@@ -49,10 +55,9 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-       if (collision.gameObject.CompareTag("Pipe"))
+       if (collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("Cloud"))
         {
-            Destroy(gameObject);
-            gameController.GameOver();
+            isAlive = false;
         }
         else if (collision.gameObject.CompareTag("ScoreZone"))
         {

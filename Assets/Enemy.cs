@@ -23,9 +23,4 @@ public class Enemy : MonoBehaviour
         direction.Normalize();
         transform.position += speed * Time.deltaTime * direction;
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
-    }
 }
