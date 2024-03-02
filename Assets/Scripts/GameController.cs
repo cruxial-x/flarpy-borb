@@ -24,33 +24,6 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
-        // Set the restart button text after a delay
-        StartCoroutine(SetRestartButtonText());
-    }
-
-    IEnumerator SetRestartButtonText()
-    {
-        yield return new WaitForSeconds(restartDelay);
-
-        string[] messages = {
-            "Please Restart??",
-            "What are you scared of?",
-            "Pipes got you pressed?",
-            "Just press the button!",
-        };
-
-        while (true)
-        {
-            foreach (string message in messages)
-            {
-                restartButtonText.text = message;
-                yield return new WaitForSeconds(restartDelay);
-                restartDelay -= 0.1f; // Decrease restart delay each loop
-
-                // Limit restart delay to 0.2f
-                restartDelay = Mathf.Clamp(restartDelay, 0f, 0.2f);
-            }
-        }
     }
     
     public void RestartGame()

@@ -12,7 +12,6 @@ public class PipeController : MonoBehaviour
     public float cloudSpawnRate = 2f;
     public float delay = 3f;
     public int cloudsBeforeEvil = 5;
-    private int cloudHitCount = 0;
     public float cloudOffset = 2f;
     public float minHeight;
     public float maxHeight;

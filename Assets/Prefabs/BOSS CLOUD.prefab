@@ -140,11 +140,10 @@ MonoBehaviour:
   speed: 0.07
   evilCloud: {fileID: 2673716493888801981, guid: a27ae52505787554da5d8f9679f1b14a, type: 3}
   hitPoints: 3
-  zigzagSpeed: 1.2
-  zigzagMagnitude: 2
+  zigzagSpeed: 3
+  zigzagMagnitude: 5
   evilCloudSpawnRate: 5
   healthPrefab: {fileID: 1331455193093087621, guid: 3eab86daa7b65e849aa6b94a0ff75929, type: 3}
-  healthBar: {fileID: 0}
 --- !u!82 &5281437783170318137
 AudioSource:
   m_ObjectHideFlags: 0
@@ -158,7 +157,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: edb9f9b94db53fd47962279ab1f2bcaa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: -1.54
   Loop: 0
   Mute: 0
   Spatialize: 0
