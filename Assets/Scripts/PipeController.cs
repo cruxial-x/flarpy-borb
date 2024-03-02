@@ -41,7 +41,7 @@ public class PipeController : MonoBehaviour
         Vector2 spawnPosition = new(transform.position.x, randomY);
         GameObject newCloud = Instantiate(cloudPrefab, spawnPosition, Quaternion.identity);
         Collider2D cloudCollider = newCloud.GetComponent<Collider2D>();
-        Collider2D playerCollider = GameObject.Find("Bird").GetComponent<Collider2D>();
+        Collider2D playerCollider = GameObject.Find("Bird")?.GetComponent<Collider2D>();
         if (cloudCollider != null && playerCollider != null)
         {
             Physics2D.IgnoreCollision(playerCollider, cloudCollider);
