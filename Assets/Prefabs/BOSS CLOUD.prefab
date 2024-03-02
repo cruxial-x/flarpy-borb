@@ -143,6 +143,8 @@ MonoBehaviour:
   zigzagSpeed: 1.2
   zigzagMagnitude: 2
   evilCloudSpawnRate: 5
+  healthPrefab: {fileID: 1331455193093087621, guid: 3eab86daa7b65e849aa6b94a0ff75929, type: 3}
+  healthBar: {fileID: 0}
 --- !u!82 &5281437783170318137
 AudioSource:
   m_ObjectHideFlags: 0

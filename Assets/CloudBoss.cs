@@ -13,11 +13,22 @@ public class CloudBoss : MonoBehaviour
     private float zigzagTime = 0.0f;
     public float evilCloudSpawnRate = 1.0f;
     private BirdController bird;
+    public GameObject healthPrefab; 
+    private GameObject healthBar;
+    private List<GameObject> healthCircles = new List<GameObject>(); // List to store the health circles
+
     // Start is called before the first frame update
     void Start()
     {
         bird = GameObject.Find("Bird").GetComponent<BirdController>();
+        healthBar = GameObject.Find("Health");
+        Transform healthCircleParent = healthBar.transform;
         InvokeRepeating("SpawnEvilCloud", 0, evilCloudSpawnRate);
+        for (int i = 0; i < hitPoints; i++)
+        {
+            GameObject healthCircle = Instantiate(healthPrefab, healthCircleParent);
+            healthCircles.Add(healthCircle);
+        }
     }
 
     // Update is called once per frame
@@ -61,6 +72,12 @@ public class CloudBoss : MonoBehaviour
                 Debug.Log("No AudioSource found on this GameObject.");
             }
         hitPoints--;
+        // Remove a health circle from the screen
+        if (healthCircles.Count > 0)
+        {
+            Destroy(healthCircles[healthCircles.Count - 1]);
+            healthCircles.RemoveAt(healthCircles.Count - 1);
+        }
         Destroy(collision.gameObject);
         }
     }
