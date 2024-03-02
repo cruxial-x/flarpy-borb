@@ -27,16 +27,17 @@ public class ProjectileController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
         if(collision.gameObject.CompareTag("Pipe"))
         {
             bird.DecreaseScore();
+            Destroy(collision.gameObject);
         }
         if(collision.gameObject.CompareTag("Cloud"))
         {
             bird.IncrementScore();
             bird.IncrementCloudHitCount();
+            Destroy(collision.gameObject);
         }
+        Destroy(gameObject);
     }
 }

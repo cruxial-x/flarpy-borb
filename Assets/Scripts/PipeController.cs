@@ -30,10 +30,9 @@ public class PipeController : MonoBehaviour
 
     void Update()
     {
-        if (bird.GetCloudHitCount() >= cloudsBeforeEvil)
+        if (bird.GetCloudHitCount() >= cloudsBeforeEvil && !GameObject.Find("BOSS CLOUD(Clone)"))
         {
             SpawnBossCloud();
-            bird.ResetCloudHitCount(); // Reset the cloud hit count in the bird
         }
     }
 
@@ -57,8 +56,7 @@ public class PipeController : MonoBehaviour
     }
     void SpawnBossCloud()
     {
-        float randomY = Random.Range(minHeight, maxHeight + cloudOffset);
-        Vector2 spawnPosition = new(transform.position.x, randomY);
+        Vector2 spawnPosition = new(transform.position.x, transform.position.y);
         Instantiate(bossCloudPrefab, spawnPosition, Quaternion.identity);
     }
 }

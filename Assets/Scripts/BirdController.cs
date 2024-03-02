@@ -70,9 +70,9 @@ public class BirdController : MonoBehaviour
         }
     }
         // Call this method when the bird clears a pipe
-    public void IncrementScore()
+    public void IncrementScore(int count = 1)
     {
-        score++;
+        score += count;
         UpdateScoreText();
         if (score > highScore)
         {
