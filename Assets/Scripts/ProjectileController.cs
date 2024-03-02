@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    private BirdController bird;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,7 @@ public class ProjectileController : MonoBehaviour
         {
             Physics2D.IgnoreCollision(scoreZone.GetComponent<Collider2D>(), collider);
         }
+        bird = GameObject.Find("Bird").GetComponent<BirdController>();
         // Destroy the Projectile after 5 seconds
         Destroy(gameObject, 3);
     }
@@ -27,5 +29,13 @@ public class ProjectileController : MonoBehaviour
     {
         Destroy(collision.gameObject);
         Destroy(gameObject);
+        if(collision.gameObject.CompareTag("Pipe"))
+        {
+            bird.DecreaseScore();
+        }
+        if(collision.gameObject.CompareTag("Cloud"))
+        {
+            bird.IncrementScore();
+        }
     }
 }

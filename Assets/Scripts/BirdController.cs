@@ -8,14 +8,19 @@ public class BirdController : MonoBehaviour
     public Rigidbody2D rb;
     public GameController gameController;
     public GameObject gunPrefab;
+    public float timeBetweenShots = 0.5f;
+    private float timeOfLastShot = 0;
     public Text scoreText;
-    private int score = 0;
+    public Text highScoreText;
+    public int score = 0;
+    private int highScore;
 
     public float flapForce = 5;
     // Start is called before the first frame update
     void Start()
     {
-
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UpdateHighScoreText();
     }
 
     // Update is called once per frame
@@ -26,9 +31,10 @@ public class BirdController : MonoBehaviour
             rb.velocity = Vector2.up * flapForce;
         }
         // Shoot the gun when the player presses Fire3
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown("Fire3") && Time.time > timeOfLastShot + timeBetweenShots)
         {
             ShootGun();
+            timeOfLastShot = Time.time;
         }
     }
 
@@ -43,7 +49,6 @@ public class BirdController : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             IncrementScore();
-            Debug.Log("Score: " + score);
         }
     }
         // Call this method when the bird clears a pipe
@@ -51,11 +56,26 @@ public class BirdController : MonoBehaviour
     {
         score++;
         UpdateScoreText();
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            UpdateHighScoreText();
+        }
     }
-        // Update the score text UI
+    public void DecreaseScore()
+    {
+        score--;
+        UpdateScoreText();
+    }
     private void UpdateScoreText()
     {
         scoreText.text = "  Score: " + score;
+    }
+    private void UpdateHighScoreText()
+    {
+        highScoreText.text = "  High Score: " + highScore;
+        Debug.Log(highScoreText.text);
     }
     private void ShootGun()
     {

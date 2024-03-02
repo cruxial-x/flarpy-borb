@@ -12,6 +12,7 @@ public class DestroyAfterAnimation : MonoBehaviour
     void Start()
     {
         float animationLength = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        Debug.Log("Animation Length: " + animationLength);
         StartCoroutine(FireProjectileAtHalfAnimation(animationLength / 2));
         Destroy(gameObject, animationLength);
     }
