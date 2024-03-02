@@ -8,7 +8,6 @@ public class BirdController : MonoBehaviour
     public Rigidbody2D rb;
     public GameController gameController;
     public GameObject gunPrefab;
-
     public Text scoreText;
     private int score = 0;
 
@@ -35,11 +34,7 @@ public class BirdController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Cloud"))
-        {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        }
-        else if (collision.gameObject.CompareTag("Pipe"))
+       if (collision.gameObject.CompareTag("Pipe"))
         {
             Destroy(gameObject);
             gameController.GameOver();
