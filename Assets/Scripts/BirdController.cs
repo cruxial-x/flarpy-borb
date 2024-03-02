@@ -26,7 +26,8 @@ public class BirdController : MonoBehaviour
         {
             rb.velocity = Vector2.up * flapForce;
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        // Shoot the gun when the player presses Fire3
+        if (Input.GetButtonDown("Fire3"))
         {
             ShootGun();
         }
