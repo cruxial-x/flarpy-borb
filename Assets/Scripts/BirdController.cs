@@ -79,6 +79,21 @@ public class BirdController : MonoBehaviour
     }
     private void ShootGun()
     {
+        StartCoroutine(Bang());
         Instantiate(gunPrefab, transform);
+    }
+    IEnumerator Bang()
+    {
+        // Get the AudioSource from the GameObject and play it after 0.55 seconds
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            yield return new WaitForSeconds(timeBetweenShots / 2);
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.Log("No AudioSource found on this GameObject.");
+        }
     }
 }

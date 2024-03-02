@@ -36,6 +36,7 @@ public class DestroyAfterAnimation : MonoBehaviour
         GameObject firePoint = GameObject.Find("firePoint");
         Debug.Log("firePoint: " + firePoint.transform.position); 
         // Create a new Projectile at the bird's position
+
         GameObject Projectile = Instantiate(ProjectilePrefab, firePoint.transform);
         // Get the Projectile's rigidbody
         Rigidbody2D ProjectileRb = Projectile.GetComponent<Rigidbody2D>();
@@ -44,3 +45,4 @@ public class DestroyAfterAnimation : MonoBehaviour
         ProjectileRb.AddForce(Vector2.right * projectileForce, ForceMode2D.Impulse);
     }
 }
+
