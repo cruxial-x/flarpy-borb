@@ -36,6 +36,7 @@ public class ProjectileController : MonoBehaviour
         if(collision.gameObject.CompareTag("Cloud"))
         {
             bird.IncrementScore();
+            bird.IncrementCloudHitCount();
         }
     }
 }

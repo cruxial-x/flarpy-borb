@@ -6,9 +6,12 @@ public class PipeController : MonoBehaviour
 {
     public GameObject pipePrefab;
     public GameObject cloudPrefab;
+    public GameObject evilCloudPrefab;
+    public BirdController bird;
     public float spawnRate = 2f;
+    private bool spawnEvil = false;
     public float delay = 3f;
-
+    public int cloudsBeforeEvil = 3;
     public float cloudOffset = 2f;
     public float minHeight;
     public float maxHeight;
@@ -26,7 +29,11 @@ public class PipeController : MonoBehaviour
 
     void Update()
     {
-
+        if (bird.GetCloudHitCount() >= cloudsBeforeEvil && !spawnEvil)
+        {
+            spawnEvil = true;
+            InvokeRepeating("SpawnEvilCloud", 0, spawnRate * 1.5f);
+        }
     }
 
     void SpawnPipe()
@@ -46,5 +53,11 @@ public class PipeController : MonoBehaviour
         {
             Physics2D.IgnoreCollision(playerCollider, cloudCollider);
         }
+    }
+    void SpawnEvilCloud()
+    {
+        float randomY = Random.Range(minHeight, maxHeight + cloudOffset);
+        Vector2 spawnPosition = new(transform.position.x, randomY);
+        Instantiate(evilCloudPrefab, spawnPosition, Quaternion.identity);
     }
 }

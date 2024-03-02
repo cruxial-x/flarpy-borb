@@ -13,6 +13,7 @@ public class BirdController : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
     public int score = 0;
+    private int cloudHitCount = 0;
     private int highScore;
 
     public float flapForce = 5;
@@ -36,6 +37,14 @@ public class BirdController : MonoBehaviour
             ShootGun();
             timeOfLastShot = Time.time;
         }
+    }
+    public int GetCloudHitCount()
+    {
+        return cloudHitCount;
+    }
+    public void IncrementCloudHitCount()
+    {
+        cloudHitCount++;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
