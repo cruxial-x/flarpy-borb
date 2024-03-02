@@ -1023,7 +1023,7 @@ MonoBehaviour:
   scoreText: {fileID: 1997253437}
   highScoreText: {fileID: 1622334715}
   score: 0
-  flapForce: 4
+  flapForce: 3.7
 --- !u!58 &1006019837
 CircleCollider2D:
   m_ObjectHideFlags: 0
