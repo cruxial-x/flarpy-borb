@@ -8,6 +8,7 @@ TagManager:
   - PipeDestroyer
   - ScoreZone
   - Cloud
+  - Enemy
   layers:
   - Default
   - TransparentFX

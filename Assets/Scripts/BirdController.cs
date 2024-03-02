@@ -52,6 +52,10 @@ public class BirdController : MonoBehaviour
     {
         cloudHitCount++;
     }
+    public void ResetCloudHitCount()
+    {
+        cloudHitCount = 0;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

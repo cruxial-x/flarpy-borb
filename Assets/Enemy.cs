@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         MoveTowardsPlayer();
+        RotateMenacingly();
     }
     void MoveTowardsPlayer()
     {
@@ -22,5 +23,9 @@ public class Enemy : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
         direction.Normalize();
         transform.position += speed * Time.deltaTime * direction;
+    }
+    void RotateMenacingly()
+    {
+        transform.Rotate(0, 0, 1);
     }
 }
